@@ -11,9 +11,7 @@ jobs:
     inputs:
       buildType: specific
       specificBuildWithTriggering: true
-      project: $(Build.TriggeredBy.ProjectID)
-      pipelineId: $(Build.TriggeredBy.DefinitionId)
-      artifactName: bazel.release
+      artifactName: "bazel.release"
       targetPath: $(Build.StagingDirectory)/release
 
   - bash: |
