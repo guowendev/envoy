@@ -1,0 +1,20 @@
+# Only triggers on build completion
+trigger: none
+pr: none
+
+jobs:
+- job: docker
+  pool:
+    vmImage: 'Ubuntu 16.04'
+  steps:
+  - task: DownloadPipelineArtifact@2
+    inputs:
+      buildType: specific
+      specificBuildWithTriggering: true
+      project: $(Build.TriggeredBy.ProjectID)
+      pipelineId: $(Build.TriggeredBy.DefinitionId)
+      artifactName: bazel.release
+      targetPath: $(Build.StagingDirectory)/release
+
+  - bash: |
+      find $(Build.StagingDirectory)/release
