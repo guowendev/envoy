@@ -105,16 +105,6 @@ jobs:
            at: /build/envoy/generated
        - run: ci/coverage_publish.sh
 
-   clang_tidy:
-     executor: ubuntu-build
-     steps:
-       - run: rm -rf /home/circleci/project/.git # CircleCI git caching is likely broken
-       - checkout
-       - run:
-           command:
-             ci/do_circle_ci.sh bazel.clang_tidy
-           no_output_timeout: 60m
-
    build_image:
      docker:
        - image: google/cloud-sdk
