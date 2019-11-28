@@ -14,6 +14,9 @@ namespace Server {
  * GuardDog. A shared pointer to a WatchDog is obtained from the GuardDog at
  * thread startup. After this point the "touch" method must be called
  * periodically to avoid triggering the deadlock detector.
+ * 监视程序对象是单个线程与死锁保护程序的接口。
+ * 线程启动时，从GuardDog获取一个指向看门狗的共享指针。
+ * 在此之后，必须定期调用“touch”方法，以避免触发死锁检测器。
  */
 class WatchDog {
 public:
